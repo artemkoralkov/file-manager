@@ -5,5 +5,8 @@ export const cat = async (path) => {
     readStream.on('error', (err) => {
         console.log('Operation Failed');
     });
-    readStream.pipe(process.stdout);
+    readStream.on('data', (chunk) => {
+        console.log(chunk.toString());
+    });
+   //readStream.pipe(process.stdout);
 };
